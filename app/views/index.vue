@@ -1,30 +1,26 @@
 <template>
     <div class="page">
-        <div class="header">功能演示</div>
-
-        <div class="button-list">
-            <div class="button">微信内支付</div>
-            <div class="button">微信外支付</div>
-            <div class="button">支付宝支付</div>
+        <div class="expression">:)</div>
+        <h1>{{ ssrData.title }}</h1>
+        <h2>{{ ssrData.subtitle }}</h2>
+        <div class="linkBox">
+            <a href="https://www.thinkts.com">完全开发手册</a>
+            <a href="https://github.com/zy598586050/think-ts-lib">GitHub源码</a>
+            <a @click="clickLike">点击喜欢：{{ localCount }}</a>
         </div>
+        <Footer />
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            count: 9863763
-        }
-    },
-    created() {
-        wx.config({})
-    },
-    methods: {
-        clickLike() {
-            this.count++
-        }
-    }
+<script setup lang="ts">
+import { ref } from 'vue'
+import Footer from './footer.vue'
+
+const props = defineProps(['ssrData'])
+const localCount = ref(props.ssrData.count)
+
+const clickLike = () => {
+    localCount.value++
 }
 </script>
 
@@ -33,41 +29,44 @@ export default {
     padding: 0;
     margin: 0;
 }
+</style>
 
+<style lang="scss">
 .page {
-    width: 100%;
-    height: 100vh;
-    max-width: 393px;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,.07);
-}
+    padding: 24px 48px;
 
-.page > .header {
-    font-size: 20px;
-    font-weight: 700;
-    background: #ffffff;
-    color: #333;
-    box-shadow: 0 4px 10px rgba(0,0,0,.07);
-    text-align: center;
-    padding: 15px 0;
-}
+    .expression {
+        font-size: 100px;
+        font-weight: normal;
+    }
 
-.page > .button-list {
-    padding: 10px;
-}
+    h1 {
+        font-size: 42px;
+        margin-top: 12px;
+    }
 
-.page > .button-list > .button {
-    color: #ffffff;
-    border: 1px solid #6190e8;
-    background: #6190e8;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    padding: 13px 0;
-    text-align: center;
-    cursor: pointer;
-}
+    h2 {
+        font-size: 30px;
+        margin-top: 12px;
+    }
 
-.page > .button-list > .button:active {
-    opacity: .6;
+    .linkBox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #2E5CD5;
+        text-decoration: none;
+        margin-right: 15px;
+        font-size: 18px;
+    }
+
+    a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }
 </style>
