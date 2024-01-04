@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyu
  * @Date: 2023-11-14 20:39:24
- * @LastEditTime: 2023-11-14 20:50:35
+ * @LastEditTime: 2023-12-29 19:07:17
  */
 import fs from 'fs'
 
@@ -11,7 +11,7 @@ export default {
         accessKeyId: '',
         secretAccessKey: '',
         bucket: '', // 存储空间
-        region: '', // 空间所在大区
+        region: 'oss-cn-zhangjiakou', // 空间所在大区
     },
     // 支付宝相关配置
     alipay: {
