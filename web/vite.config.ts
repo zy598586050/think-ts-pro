@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyu
  * @Date: 2023-12-29 11:13:13
- * @LastEditTime: 2023-12-29 17:32:43
+ * @LastEditTime: 2024-01-05 12:24:12
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -20,7 +20,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:5985',
+        target: 'http://127.0.0.1:5986',
         changeOrigin: true
       }
     }

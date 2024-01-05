@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyu
  * @Date: 2023-10-24 10:04:07
- * @LastEditTime: 2023-12-29 19:06:29
+ * @LastEditTime: 2024-01-05 12:26:45
  */
 import fs from 'fs'
 import { Context, Controller, ShowSuccess, GetParams, ApiException, M, Utils } from 'think-ts-lib'
@@ -66,7 +66,9 @@ export default class WebController extends Controller {
     // 读取图片成流
     // @ts-ignore
     const reader = fs.createReadStream(ctx.request.files.file.filepath)
-    let result = Utils.OSS().putStream('1.png', reader)
+    // @ts-ignore
+    const fileName = ctx.request.files.file.originalFilename
+    const result = Utils.OSS().putStream(fileName, reader)
     return ShowSuccess(result)
   }
 
